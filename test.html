@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generate and Send Numberkey</title>
+</head>
+<body>
+
+<!-- แบบฟอร์ม -->
+<form id="targetForm" action="your_action_page.html" method="post">
+  <label for="targetNumberkey">Target Numberkey:</label>
+  <input type="text" id="targetNumberkey" name="targetNumberkey" readonly>
+  <!-- เพิ่มปุ่ม Generate ในฟอร์ม -->
+  <button type="button" onclick="generateAndSendNumberKey()">Generate Numberkey</button>
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+function generateNumberKey() {
+    var randomNumber = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+    return "HN-" + randomNumber;
+}
+
+function generateAndSendNumberKey() {
+    // สร้าง numberkey
+    var numberkey = generateNumberKey();
+    
+    // กำหนดค่า numberkey ให้กับฟิลด์ที่ต้องการในฟอร์มเป้าหมาย
+    document.getElementById("targetNumberkey").value = numberkey;
+}
+</script>
+
+</body>
+</html>
